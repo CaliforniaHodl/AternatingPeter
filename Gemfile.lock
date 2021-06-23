@@ -84,6 +84,7 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
+    ffi (1.15.3-x64-mingw32)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -127,7 +128,10 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.10-x64-mingw32)
+      mini_portile2 (~> 2.4.0)
     pg (1.2.3)
+    pg (1.2.3-x64-mingw32)
     public_suffix (4.0.6)
     puma (3.12.6)
     rack (2.2.3)
@@ -209,11 +213,14 @@ GEM
       simple_oauth (~> 0.3.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2021.1)
+      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unf_ext (0.0.7.7-x64-mingw32)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -227,6 +234,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
@@ -251,7 +259,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.7.3p183
 
 BUNDLED WITH
-   1.17.1
+   2.2.21
