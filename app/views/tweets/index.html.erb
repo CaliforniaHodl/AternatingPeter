@@ -1,0 +1,9 @@
+<section>
+  <ul>
+    <% @tweet.each do |tweet| %>
+        <li>
+      <%= tweet.content %> | <%= tweet.created_at %>
+      </li>
+    <% end %>
+  </ul>
+</section>
