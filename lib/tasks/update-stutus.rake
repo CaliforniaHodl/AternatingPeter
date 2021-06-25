@@ -32,7 +32,7 @@ namespace :ap do
     # print results
     p newText
 
-    # client.update(newText)
+    client.update(newText)
 
     puts "It works!"
   end
