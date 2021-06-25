@@ -23,12 +23,23 @@ namespace :ap do
     tweet = client.status(twitterId , tweet_mode: 'extended').text
     bodyNotLink = tweet.split(' https:')[0]
 
+
+    @lastTwitterId = Tweet.last.twitterId
+
+
     # # blank string for transformation
     newText = ''
     bodyNotLink.chars.map.with_index { |ch, idx|
       newText += idx.even? ? ch.upcase : ch.downcase
     }
 
+
+    if @lastTwitterId != twitterId
+        t = Tweet.new
+        t.content = newText
+        t.twitterId = twitterId
+        t.save
+      end
     # print results
     p newText
 
