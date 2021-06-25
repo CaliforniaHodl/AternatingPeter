@@ -13,37 +13,26 @@ namespace :ap do
       config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
     end
 
-    # get last tweet from peter
-    tweet = client.user_timeline('PeterSchiff', count: 1)
+    twitterId = 0
+    tweetid = client.user_timeline('PeterSchiff', count: 1)
 
-    @lastTwitterId = Tweet.last.twitterId
-
-    p @lastTwitterId
-
-    tweet.each do |tweet|
-        if @lastTwitterId != tweet.id
-
-          body = tweet.full_text
-
-          t = Tweet.new
-          t.content = body
-          t.twitterId = tweet.id
-          t.save
-        end
-
+    tweetid.each do |tweet|
+      twitterId =  tweet.id
     end
 
+    tweet = client.status(twitterId , tweet_mode: 'extended').text
+    bodyNotLink = tweet.split(' https:')[0]
 
-    # blank string for transformation
+    # # blank string for transformation
     newText = ''
-    body.chars.map.with_index { |ch, idx|
+    bodyNotLink.chars.map.with_index { |ch, idx|
       newText += idx.even? ? ch.upcase : ch.downcase
     }
 
     # print results
     p newText
 
-    client.update(newText)
+    # client.update(newText)
 
     puts "It works!"
   end
