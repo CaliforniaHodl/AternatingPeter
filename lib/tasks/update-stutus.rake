@@ -14,14 +14,21 @@ namespace :ap do
     end
 
     twitterId = 0
-    tweetid = client.user_timeline('PeterSchiff', count: 1)
+    tweetid = client.user_timeline('PeterSchiff', count: 2)
 
     tweetid.each do |tweet|
       twitterId =  tweet.id
     end
 
     tweet = client.status(twitterId , tweet_mode: 'extended').text
-    bodyNotLink = tweet.split(' https:')[0]
+
+    if tweet.split("\n").length == 2
+      bodyNotLink = tweet.split("\n")[0]
+    elsif tweet.split(' https:').length == 2
+      bodyNotLink = tweet.split(' https:')[0]
+    elsif tweet.split(' http:').length == 2
+      bodyNotLink = tweet.split(' http:')[0]
+    end
 
 
     @lastTwitterId = Tweet.last.twitterId
@@ -40,7 +47,7 @@ namespace :ap do
         t.twitterId = twitterId
         t.save
       end
-    # print results
+    print results
     p newText
 
     client.update(newText)
