@@ -14,7 +14,7 @@ namespace :ap do
     end
 
     twitterId = 0
-    tweetid = client.user_timeline('PeterSchiff', count: 2)
+    tweetid = client.user_timeline('PeterSchiff', count: 1)
 
     tweetid.each do |tweet|
       twitterId =  tweet.id
