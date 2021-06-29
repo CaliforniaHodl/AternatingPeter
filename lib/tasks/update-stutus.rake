@@ -20,7 +20,7 @@ namespace :ap do
       twitterId =  tweet.id
     end
 
-    tweet = client.status(twitterId , tweet_mode: 'extended').text
+    p tweet = client.status(twitterId , tweet_mode: 'extended').text
 
     if tweet.split("\n").length == 2
       bodyNotLink = tweet.split("\n")[0]
@@ -28,6 +28,8 @@ namespace :ap do
       bodyNotLink = tweet.split(' https:')[0]
     elsif tweet.split(' http:').length == 2
       bodyNotLink = tweet.split(' http:')[0]
+    else
+        bodyNotLink = tweet
     end
 
 
@@ -47,7 +49,6 @@ namespace :ap do
         t.twitterId = twitterId
         t.save
       end
-    print results
     p newText
 
     client.update(newText)
