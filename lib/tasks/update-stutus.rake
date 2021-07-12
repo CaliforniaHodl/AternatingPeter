@@ -20,7 +20,8 @@ namespace :ap do
       twitterId =  tweet.id
     end
 
-    p tweet = client.status(twitterId , tweet_mode: 'extended').text
+    tweet = client.status(twitterId , tweet_mode: 'extended').text
+
 
     if tweet.split("\n").length == 2
       bodyNotLink = tweet.split("\n")[0]
@@ -39,6 +40,9 @@ namespace :ap do
     # # blank string for transformation
     newText = ''
     bodyNotLink.chars.map.with_index { |ch, idx|
+      if ch == '@'
+        ch = ''
+      end
       newText += idx.even? ? ch.upcase : ch.downcase
     }
 
@@ -49,7 +53,7 @@ namespace :ap do
         t.twitterId = twitterId
         t.save
       end
-    p newText
+     # p newText
 
     client.update(newText)
 

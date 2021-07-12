@@ -5,6 +5,8 @@ gem 'dotenv-rails'
 ruby '2.7.3'
 gem "twitter"
 
+
+ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
 # Use postgresql as the database for Active Record
